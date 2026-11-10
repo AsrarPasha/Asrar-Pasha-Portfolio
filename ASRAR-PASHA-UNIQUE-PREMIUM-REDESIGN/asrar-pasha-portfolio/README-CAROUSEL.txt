@@ -1,0 +1,1 @@
+Carousel redesign. Extract your video ZIP into this folder so the path is media/Asrar PP/. Keep all 11 selected videos; exclude KF 01.mp4 and DK-01 Final.mp4. Then open index.html. The videos are not included in this update ZIP because the source video archive is already provided separately.
