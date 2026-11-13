@@ -784,6 +784,42 @@ footer{border-top:1px solid #303329}
 }
 </style>
 
+
+<style id="carousel-final-frame-fix">
+/* Final carousel frame sizing: horizontal 16:9, vertical 9:16 on desktop and mobile. */
+.coverflow-card {
+  box-sizing: border-box !important;
+  height: auto !important;
+  max-height: calc(100% - 20px) !important;
+  aspect-ratio: 16 / 9 !important;
+}
+.coverflow:not(.is-vertical) .coverflow-card {
+  width: min(44vw, 560px) !important;
+}
+.coverflow.is-vertical .coverflow-card {
+  width: min(28vw, 300px) !important;
+  aspect-ratio: 9 / 16 !important;
+}
+.coverflow-card video {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+@media (max-width: 700px) {
+  .coverflow { height: 460px !important; }
+  .coverflow:not(.is-vertical) .coverflow-card {
+    width: min(88vw, 560px) !important;
+    max-height: calc(100% - 24px) !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+  .coverflow.is-vertical .coverflow-card {
+    width: min(60vw, 250px) !important;
+    max-height: calc(100% - 24px) !important;
+    aspect-ratio: 9 / 16 !important;
+  }
+}
+</style>
 </head>
 <body>
   <header class="topbar">
@@ -914,60 +950,6 @@ footer{border-top:1px solid #303329}
     </section>
   </main>
   <footer class="mono"><span>© 2026 ASRAR PASHA</span><span>BUILT WITH INTENT.</span><a class="backtop" href="#top">BACK TO TOP ↑</a></footer>
-
-<style id="final-independent-carousel-ratios">
-/* Keep each carousel's frame ratio independent from the video controls. */
-.coverflow:not(.is-vertical){
-  height:clamp(340px,48vw,620px);
-}
-.coverflow:not(.is-vertical) .coverflow-card{
-  width:min(62vw,850px);
-  height:auto;
-  aspect-ratio:16 / 9;
-}
-.coverflow.is-vertical{
-  height:clamp(460px,60vw,720px);
-}
-.coverflow.is-vertical .coverflow-card{
-  width:min(28vw,360px);
-  height:auto;
-  aspect-ratio:9 / 16;
-}
-.coverflow-card video{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-  background:#050505;
-}
-@media(max-width:700px){
-  .coverflow:not(.is-vertical){
-    height:clamp(250px,58vw,390px);
-  }
-  .coverflow:not(.is-vertical) .coverflow-card,
-  .coverflow:not(.is-vertical) .coverflow-card.is-center,
-  .coverflow:not(.is-vertical) .coverflow-card.is-left,
-  .coverflow:not(.is-vertical) .coverflow-card.is-right{
-    width:88vw!important;
-    height:auto!important;
-    aspect-ratio:16 / 9!important;
-    max-height:none!important;
-  }
-  .coverflow.is-vertical{
-    height:480px;
-  }
-  .coverflow.is-vertical .coverflow-card,
-  .coverflow.is-vertical .coverflow-card.is-center,
-  .coverflow.is-vertical .coverflow-card.is-left,
-  .coverflow.is-vertical .coverflow-card.is-right{
-    width:min(68vw,300px)!important;
-    height:auto!important;
-    aspect-ratio:9 / 16!important;
-    max-height:none!important;
-  }
-}
-</style>
-
 <script>
 document.querySelectorAll(".coverflow").forEach(root=>{
   let items;
