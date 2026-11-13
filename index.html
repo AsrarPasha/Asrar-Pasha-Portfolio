@@ -741,6 +741,49 @@ footer{border-top:1px solid #303329}
 }
 </style>
 
+
+<style id="carousel-ratio-fix-v3">
+@media(max-width:700px){
+  /* Horizontal carousel cards stay true 16:9. */
+  .coverflow:not(.is-vertical) .coverflow-card,
+  .coverflow:not(.is-vertical) .coverflow-card.is-center,
+  .coverflow:not(.is-vertical) .coverflow-card.is-left,
+  .coverflow:not(.is-vertical) .coverflow-card.is-right{
+    width:min(88vw,560px)!important;
+    height:min(49.5vw,315px)!important;
+    min-height:0!important;
+    max-height:315px!important;
+    aspect-ratio:auto!important;
+  }
+  .coverflow:not(.is-vertical) .coverflow-card video{
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+  }
+
+  /* Vertical carousel cards use a real 9:16 portrait frame. */
+  .coverflow.is-vertical .coverflow-card,
+  .coverflow.is-vertical .coverflow-card.is-center,
+  .coverflow.is-vertical .coverflow-card.is-left,
+  .coverflow.is-vertical .coverflow-card.is-right{
+    width:min(68vw,300px)!important;
+    height:min(120.9vw,533px)!important;
+    min-height:0!important;
+    max-height:533px!important;
+    aspect-ratio:auto!important;
+  }
+  .coverflow.is-vertical .coverflow-card video{
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+  }
+}
+</style>
+
 </head>
 <body>
   <header class="topbar">
