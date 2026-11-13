@@ -706,6 +706,41 @@ footer{border-top:1px solid #303329}
 @keyframes asrarPortraitFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-6px,0)}}
 @media(prefers-reduced-motion:reduce){.hero-portrait{animation:none;will-change:auto}}
 </style>
+
+
+
+
+<style id="carousel-mobile-stability">
+.coverflow-card video{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#090909;
+}
+@media(max-width:700px){
+  .coverflow{perspective:none!important;overflow:hidden}
+  .coverflow-track{transform:none!important;perspective:none!important}
+  .coverflow-card,
+  .coverflow-card.is-center,
+  .coverflow-card.is-left,
+  .coverflow-card.is-right{
+    transform:translate(-50%,-50%)!important;
+    transition:opacity .25s ease!important;
+    backface-visibility:visible!important;
+    -webkit-backface-visibility:visible!important;
+    filter:none!important;
+  }
+  .coverflow-card.is-center{opacity:1!important;z-index:5}
+  .coverflow-card.is-left{opacity:.38!important;z-index:2;pointer-events:none;transform:translate(-105%,-50%) scale(.72)!important}
+  .coverflow-card.is-right{opacity:.38!important;z-index:2;pointer-events:none;transform:translate(5%,-50%) scale(.72)!important}
+  .coverflow-card.is-hidden{opacity:0!important;pointer-events:none}
+  .coverflow-card{width:min(78vw,360px)!important;height:82%!important}
+  .coverflow.is-vertical .coverflow-card{width:min(68vw,300px)!important;height:82%!important}
+  .carousel-arrow{z-index:10}
+}
+</style>
+
 </head>
 <body>
   <header class="topbar">
@@ -837,7 +872,75 @@ footer{border-top:1px solid #303329}
   </main>
   <footer class="mono"><span>© 2026 ASRAR PASHA</span><span>BUILT WITH INTENT.</span><a class="backtop" href="#top">BACK TO TOP ↑</a></footer>
 <script>
-document.querySelectorAll(".coverflow").forEach(root=>{const items=JSON.parse(root.dataset.items),track=root.querySelector(".coverflow-track"),cat=root.closest(".carousel-category");if(cat.querySelector(".category-heading h3").textContent.toLowerCase().includes("vertical"))root.classList.add("is-vertical");let index=0;const title=cat.querySelector(".carousel-title"),count=cat.querySelector(".carousel-count"),dots=cat.querySelector(".carousel-dots");const cards=items.map((item,i)=>{const c=document.createElement("div");c.className="coverflow-card";const poster=item.poster||item.src.replace("/video/upload/","/video/upload/so_0/").replace(/\\.mp4(?:\\?.*)?$/,".jpg");c.innerHTML=`<video playsinline controls preload="metadata" poster="${poster}"><source src="${item.src}" type="video/mp4"></video>`;c.addEventListener("click",()=>{if(i!==index)show(i)});track.appendChild(c);return c});const dotEls=items.map((_,i)=>{const b=document.createElement("button");b.className="carousel-dot";b.setAttribute("aria-label","Go to video "+(i+1));b.onclick=()=>show(i);dots.appendChild(b);return b});function show(n){index=(n+items.length)%items.length;cards.forEach((c,i)=>{const v=c.querySelector("video");if(i!==index){v.pause();v.currentTime=0}c.classList.remove("is-center","is-left","is-right","is-hidden");const d=(i-index+items.length)%items.length;c.classList.add(d===0?"is-center":d===1?"is-right":d===items.length-1?"is-left":"is-hidden")});title.textContent=(cat.querySelector(".category-heading h3").textContent.toLowerCase().includes("vertical")?"Vertical ":"Horizontal ")+String(index+1).padStart(2,"0");count.textContent=String(index+1).padStart(2,"0")+" / "+String(items.length).padStart(2,"0");dotEls.forEach((d,i)=>d.classList.toggle("active",i===index))}root.querySelector(".prev").onclick=()=>show(index-1);root.querySelector(".next").onclick=()=>show(index+1);root.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")show(index-1);if(e.key==="ArrowRight")show(index+1)});show(0)});
+document.querySelectorAll(".coverflow").forEach(root=>{
+  let items;
+  try { items = JSON.parse(root.dataset.items); }
+  catch(error) { console.error("Carousel data error", error); return; }
+
+  const track = root.querySelector(".coverflow-track");
+  const category = root.closest(".carousel-category");
+  const heading = category.querySelector(".category-heading h3");
+  const isVertical = heading.textContent.toLowerCase().includes("vertical");
+  if(isVertical) root.classList.add("is-vertical");
+
+  const title = category.querySelector(".carousel-title");
+  const count = category.querySelector(".carousel-count");
+  const dots = category.querySelector(".carousel-dots");
+  let index = 0;
+
+  const cards = items.map((item,i)=>{
+    const card = document.createElement("div");
+    card.className = "coverflow-card";
+    const video = document.createElement("video");
+    video.setAttribute("playsinline","");
+    video.setAttribute("webkit-playsinline","");
+    video.setAttribute("controls","");
+    video.setAttribute("preload","metadata");
+    video.setAttribute("controlsList","nodownload");
+    video.setAttribute("aria-label",item.title || "Portfolio video");
+    const poster = item.poster || item.src
+      .replace("/video/upload/","/video/upload/so_0/")
+      .replace(/\.mp4(?:\?.*)?$/i,".jpg");
+    video.setAttribute("poster",poster);
+    // Keep each source attached so mobile browsers don't lose it after scrolling.
+    video.src = item.src;
+    card.appendChild(video);
+    track.appendChild(card);
+    return {card,video,item};
+  });
+
+  const dotEls = items.map((_,i)=>{
+    const button=document.createElement("button");
+    button.className="carousel-dot";
+    button.type="button";
+    button.setAttribute("aria-label","Go to video "+(i+1));
+    button.addEventListener("click",()=>show(i));
+    dots.appendChild(button);
+    return button;
+  });
+
+  function show(nextIndex){
+    index=(nextIndex+items.length)%items.length;
+    cards.forEach((entry,i)=>{
+      const {card,video}=entry;
+      if(i!==index) video.pause();
+      card.classList.remove("is-center","is-left","is-right","is-hidden");
+      const distance=(i-index+items.length)%items.length;
+      card.classList.add(
+        distance===0 ? "is-center" :
+        distance===1 ? "is-right" :
+        distance===items.length-1 ? "is-left" : "is-hidden"
+      );
+    });
+    title.textContent=items[index].title || ((isVertical?"Vertical ":"Horizontal ")+String(index+1).padStart(2,"0"));
+    count.textContent=String(index+1).padStart(2,"0")+" / "+String(items.length).padStart(2,"0");
+    dotEls.forEach((dot,i)=>dot.classList.toggle("active",i===index));
+  }
+
+  root.querySelector(".prev").addEventListener("click",()=>show(index-1));
+  root.querySelector(".next").addEventListener("click",()=>show(index+1));
+  show(0);
+});
 
 const menuButton=document.querySelector('.mobile-menu-toggle');
 const topbar=document.querySelector('.topbar');
@@ -853,6 +956,5 @@ if(menuButton&&topbar){
     menuButton.querySelector('span').textContent='☰';
   }));
 }
-
 </script></body>
 </html>
