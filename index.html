@@ -633,7 +633,7 @@ footer{border-top:1px solid #303329}
 
 <style>
 .carousel-category{margin-top:76px}.carousel-category .category-heading{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:28px}.carousel-category .category-heading h3{font-size:clamp(28px,4vw,48px);letter-spacing:-.065em;text-transform:uppercase;margin:0}.carousel-category .category-heading h3 span{color:var(--yellow)}
-.coverflow{height:clamp(390px,58vw,650px);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;perspective:1400px}.coverflow-track{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}.coverflow-card{position:absolute;left:50%;top:50%;width:min(44vw,510px);height:88%;background:#111;border:1px solid #5a573f;border-radius:18px;overflow:hidden;transition:transform .65s cubic-bezier(.2,.75,.2,1),opacity .65s,filter .65s;box-shadow:0 28px 80px #0009}.coverflow-card video{width:100%;height:100%;object-fit:contain;background:#090909;display:block}.coverflow.is-vertical .coverflow-card{width:min(28vw,330px);height:88%;}.coverflow.is-vertical .coverflow-card.is-left{transform:translate(-118%,-50%) rotateY(22deg) scale(.78)}.coverflow.is-vertical .coverflow-card.is-right{transform:translate(18%,-50%) rotateY(-22deg) scale(.78)}.coverflow-card.is-center{z-index:5;opacity:1;transform:translate(-50%,-50%)}.coverflow-card.is-left{z-index:3;opacity:.72;filter:brightness(.65);transform:translate(-118%,-50%) rotateY(27deg) scale(.78)}.coverflow-card.is-right{z-index:3;opacity:.72;filter:brightness(.65);transform:translate(18%,-50%) rotateY(-27deg) scale(.78)}.coverflow-card.is-hidden{z-index:1;opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(.6)}
+.coverflow{height:clamp(390px,58vw,650px);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;perspective:1400px}.coverflow-track{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}.coverflow-card{position:absolute;left:50%;top:50%;width:min(44vw,510px);height:88%;background:#111;border:1px solid #5a573f;border-radius:18px;overflow:hidden;transition:transform .65s cubic-bezier(.2,.75,.2,1),opacity .65s,filter .65s;box-shadow:0 28px 80px #0009}.coverflow-card iframe{width:100%;height:100%;display:block;border:0;background:#090909}.coverflow.is-vertical .coverflow-card{width:min(28vw,330px);height:88%;}.coverflow.is-vertical .coverflow-card.is-left{transform:translate(-118%,-50%) rotateY(22deg) scale(.78)}.coverflow.is-vertical .coverflow-card.is-right{transform:translate(18%,-50%) rotateY(-22deg) scale(.78)}.coverflow-card.is-center{z-index:5;opacity:1;transform:translate(-50%,-50%)}.coverflow-card.is-left{z-index:3;opacity:.72;filter:brightness(.65);transform:translate(-118%,-50%) rotateY(27deg) scale(.78)}.coverflow-card.is-right{z-index:3;opacity:.72;filter:brightness(.65);transform:translate(18%,-50%) rotateY(-27deg) scale(.78)}.coverflow-card.is-hidden{z-index:1;opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(.6)}
 .carousel-arrow{position:absolute;z-index:8;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid #ffffff55;background:#111c;color:#ffdc00;font-size:25px;cursor:pointer;backdrop-filter:blur(12px)}.carousel-arrow:hover{background:var(--yellow);color:#10100e}.carousel-arrow.prev{left:2%}.carousel-arrow.next{right:2%}.carousel-caption{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-top:14px}.carousel-caption h4{font-size:clamp(18px,2vw,25px);margin:8px 0 4px;letter-spacing:-.04em}.carousel-caption p{color:var(--muted);font-size:12px;margin:0}.carousel-count{color:var(--yellow)}.carousel-dots{display:flex;gap:7px;align-items:center}.carousel-dot{width:7px;height:7px;border:0;border-radius:50%;background:#666;cursor:pointer;padding:0}.carousel-dot.active{width:24px;border-radius:8px;background:var(--yellow)}
 @media(max-width:700px){.carousel-category{margin-top:54px}.coverflow{height:460px}.coverflow-card{width:68vw;height:82%}.coverflow.is-vertical .coverflow-card{width:min(62vw,280px);height:82%;}.coverflow.is-vertical .coverflow-card.is-left{transform:translate(-105%,-50%) rotateY(20deg) scale(.72)}.coverflow.is-vertical .coverflow-card.is-right{transform:translate(5%,-50%) rotateY(-20deg) scale(.72)}.coverflow-card.is-left{transform:translate(-105%,-50%) rotateY(24deg) scale(.72)}.coverflow-card.is-right{transform:translate(5%,-50%) rotateY(-24deg) scale(.72)}.carousel-arrow{width:38px;height:38px;font-size:20px}.carousel-category .category-heading{gap:12px}.carousel-category .category-heading .mono{font-size:8px}}
 </style>
@@ -711,11 +711,11 @@ footer{border-top:1px solid #303329}
 
 
 <style id="carousel-mobile-stability">
-.coverflow-card video{
+.coverflow-card iframe{
   display:block;
   width:100%;
   height:100%;
-  object-fit:contain;
+  border:0;
   background:#090909;
 }
 @media(max-width:700px){
@@ -820,62 +820,6 @@ footer{border-top:1px solid #303329}
   }
 }
 </style>
-
-<style id="asrar-carousel-mobile-final-override">
-/* One consistent sizing system for the portfolio carousel */
-.coverflow-card{
-  box-sizing:border-box!important;
-  height:auto!important;
-  min-height:0!important;
-  max-height:none!important;
-  overflow:hidden!important;
-}
-.coverflow-card video{
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  object-fit:contain!important;
-}
-.coverflow:not(.is-vertical) .coverflow-card{
-  width:min(44vw,560px)!important;
-  aspect-ratio:16/9!important;
-}
-.coverflow.is-vertical .coverflow-card{
-  width:min(28vw,300px)!important;
-  aspect-ratio:9/16!important;
-}
-@media(max-width:700px){
-  .coverflow{
-    height:500px!important;
-    min-height:500px!important;
-    padding:12px 0!important;
-    overflow:hidden!important;
-  }
-  .coverflow-track{
-    height:100%!important;
-    min-height:0!important;
-  }
-  .coverflow:not(.is-vertical) .coverflow-card{
-    width:min(88vw,560px)!important;
-    aspect-ratio:16/9!important;
-    max-height:none!important;
-  }
-  .coverflow.is-vertical .coverflow-card{
-    width:min(60vw,270px)!important;
-    aspect-ratio:9/16!important;
-    max-height:none!important;
-  }
-  .coverflow-card video{
-    width:100%!important;
-    height:100%!important;
-    object-fit:contain!important;
-  }
-}
-@media(prefers-reduced-motion:reduce){
-  .coverflow-card{transition:none!important}
-}
-</style>
-
 </head>
 <body>
   <header class="topbar">
@@ -915,7 +859,7 @@ footer{border-top:1px solid #303329}
 
     <div class="ticker mono"><span>FRAME / FORM / FEEL</span><span>SELECTED WORK — 2026</span><span>HYDERABAD, INDIA ↗</span></div>
 
-    <section class="section" id="work"><div class="section-head"><h2>Selected<br>work<span style="color:var(--yellow)">.</span></h2><span class="mono">01 — PROJECTS</span></div><div class="portfolio-category carousel-category"><div class="category-heading"><h3>Vertical Videos<span>.</span></h3><span class="mono">9:16 / SELECTED WORK</span></div><div class="coverflow" data-items='[{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/08_Prathyusha_Bc_V_4K.mp4&quot;,&quot;title&quot;:&quot;Vertical 01&quot;},{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/v1794315945/Kf_01.mp4&quot;,&quot;title&quot;:&quot;Vertical 02&quot;},{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/Dk-01_Final.mp4&quot;,&quot;title&quot;:&quot;Vertical 03&quot;},{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/14_Bc_Saankhya_V_4K.mp4&quot;,&quot;title&quot;:&quot;Vertical 04&quot;},{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/06_Prathyusha_Bc_V_4K_01.mp4&quot;,&quot;title&quot;:&quot;Vertical 05&quot;},{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/01_Tc_Saankhya_Promotional_V_4K.mp4&quot;,&quot;title&quot;:&quot;Vertical 06&quot;},{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/01_Tc_Prathyusha_V_4K_01.mp4&quot;,&quot;title&quot;:&quot;Vertical 07&quot;},{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/04_Tc_Saankhya_Promotional_V_4K_01.mp4&quot;,&quot;title&quot;:&quot;Vertical 08&quot;},{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/A-03_Tc_Saankhya_Promotional_V_Ni_4K.mp4&quot;,&quot;title&quot;:&quot;Vertical 09&quot;}]'><button class="carousel-arrow prev" aria-label="Previous">←</button><div class="coverflow-track"></div><button class="carousel-arrow next" aria-label="Next">→</button></div><div class="carousel-caption"><div><span class="mono carousel-count">01 / 07</span><h4 class="carousel-title">Vertical 01</h4><p>9:16 · Vertical Video</p></div><div class="carousel-dots"></div></div></div><div class="portfolio-category carousel-category"><div class="category-heading"><h3>Horizontal Videos<span>.</span></h3><span class="mono">16:9 / SELECTED WORK</span></div><div class="coverflow" data-items='[{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/04_Tc_Sankhya_H_4K.mp4&quot;,&quot;title&quot;:&quot;Horizontal 01&quot;,&quot;poster&quot;:&quot;assets/horizontal-01-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/05_Tc_Sankhya_H-4K.mp4&quot;,&quot;title&quot;:&quot;Horizontal 02&quot;,&quot;poster&quot;:&quot;assets/horizontal-02-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/01_Sv_Sankhya_H.mp4&quot;,&quot;title&quot;:&quot;Horizontal 03&quot;},{&quot;src&quot;:&quot;https://res.cloudinary.com/ruzjongu/video/upload/09_Tc_Sankhya_H_4K.mp4&quot;,&quot;title&quot;:&quot;Horizontal 04&quot;}]'><button class="carousel-arrow prev" aria-label="Previous">←</button><div class="coverflow-track"></div><button class="carousel-arrow next" aria-label="Next">→</button></div><div class="carousel-caption"><div><span class="mono carousel-count">01 / 04</span><h4 class="carousel-title">Horizontal 01</h4><p>16:9 · Horizontal Video</p></div><div class="carousel-dots"></div></div></div></section>
+    <section class="section" id="work"><div class="section-head"><h2>Selected<br>work<span style="color:var(--yellow)">.</span></h2><span class="mono">01 — PROJECTS</span></div><div class="portfolio-category carousel-category"><div class="category-heading"><h3>Vertical Videos<span>.</span></h3><span class="mono">9:16 / SELECTED WORK</span></div><div class="coverflow" data-items='[{&quot;src&quot;:&quot;https://drive.google.com/file/d/1C2jJ-SA6HpMkjpzxkxBMt_GE4pGoQO-_/preview&quot;,&quot;title&quot;:&quot;Vertical 01&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1gT0lUG95DjpJ2hFsytCYiMb8ZziH9awc/preview&quot;,&quot;title&quot;:&quot;Vertical 02&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1UZTp_Yp069BHked5v_FJKT9hoXet0eJ8/preview&quot;,&quot;title&quot;:&quot;Vertical 03&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/161MNM89PnN3ksJuDEFwXeCdZk6_fSd8-/preview&quot;,&quot;title&quot;:&quot;Vertical 04&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1KEj5hOIxj-HulP-k1MuoESyX1e12qDm0/preview&quot;,&quot;title&quot;:&quot;Vertical 05&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1LTtQNXpXL54_tCXBNvDsyOgiu-SNZIHy/preview&quot;,&quot;title&quot;:&quot;Vertical 06&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1rqUOCV_FCLsT6nJVeSQw0r5nshaNPkjd/preview&quot;,&quot;title&quot;:&quot;Vertical 07&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/10ij36H2jxByrHCGBpfQvWrJQqnWbohJI/preview&quot;,&quot;title&quot;:&quot;Vertical 08&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1Q_HkCv8AKjmZsSaGULjjyUsez2abItSW/preview&quot;,&quot;title&quot;:&quot;Vertical 09&quot;}]'><button class="carousel-arrow prev" aria-label="Previous">←</button><div class="coverflow-track"></div><button class="carousel-arrow next" aria-label="Next">→</button></div><div class="carousel-caption"><div><span class="mono carousel-count">01 / 09</span><h4 class="carousel-title">Vertical 01</h4><p>9:16 · Vertical Video</p></div><div class="carousel-dots"></div></div></div><div class="portfolio-category carousel-category"><div class="category-heading"><h3>Horizontal Videos<span>.</span></h3><span class="mono">16:9 / SELECTED WORK</span></div><div class="coverflow" data-items='[{&quot;src&quot;:&quot;https://drive.google.com/file/d/1iPWOEdgb4qZ4VwO4EAeZOyOhyqVm-mTd/preview&quot;,&quot;title&quot;:&quot;Horizontal 01&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1ZtrxiE7j7-xuupOMZFnE4MJiG9AtCdqJ/preview&quot;,&quot;title&quot;:&quot;Horizontal 02&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/17CA2KL1W34MwFGxvmOl9DvqI_fUxoWl1/preview&quot;,&quot;title&quot;:&quot;Horizontal 03&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1EMd5haf41GbdFKwtfOaoKQdBmafP3tKQ/preview&quot;,&quot;title&quot;:&quot;Horizontal 04&quot;}]'><button class="carousel-arrow prev" aria-label="Previous">←</button><div class="coverflow-track"></div><button class="carousel-arrow next" aria-label="Next">→</button></div><div class="carousel-caption"><div><span class="mono carousel-count">01 / 04</span><h4 class="carousel-title">Horizontal 01</h4><p>16:9 · Horizontal Video</p></div><div class="carousel-dots"></div></div></div></section>
 
 <section class="section" id="expertise">
       <div class="section-head"><h2>What I do<span style="color:var(--yellow)">.</span></h2><span class="mono">03 — EXPERTISE</span></div>
@@ -1026,22 +970,17 @@ document.querySelectorAll(".coverflow").forEach(root=>{
   const cards = items.map((item,i)=>{
     const card = document.createElement("div");
     card.className = "coverflow-card";
-    const video = document.createElement("video");
-    video.setAttribute("playsinline","");
-    video.setAttribute("webkit-playsinline","");
-    video.setAttribute("controls","");
-    video.setAttribute("preload","metadata");
-    video.setAttribute("controlsList","nodownload");
-    video.setAttribute("aria-label",item.title || "Portfolio video");
-    const poster = item.poster || item.src
-      .replace("/video/upload/","/video/upload/so_0/")
-      .replace(/\.mp4(?:\?.*)?$/i,".jpg");
-    video.setAttribute("poster",poster);
-    // Keep each source attached so mobile browsers don't lose it after scrolling.
-    video.src = item.src;
-    card.appendChild(video);
+    const player = document.createElement("iframe");
+    player.src = item.src;
+    player.title = item.title || "Portfolio video";
+    player.setAttribute("allow","autoplay; encrypted-media; picture-in-picture; fullscreen");
+    player.setAttribute("allowfullscreen","");
+    player.setAttribute("loading",i===0 ? "eager" : "lazy");
+    player.setAttribute("referrerpolicy","strict-origin-when-cross-origin");
+    player.style.cssText = "display:block;width:100%;height:100%;border:0;background:#090909";
+    card.appendChild(player);
     track.appendChild(card);
-    return {card,video,item};
+    return {card,player,item};
   });
 
   const dotEls = items.map((_,i)=>{
@@ -1057,8 +996,9 @@ document.querySelectorAll(".coverflow").forEach(root=>{
   function show(nextIndex){
     index=(nextIndex+items.length)%items.length;
     cards.forEach((entry,i)=>{
-      const {card,video}=entry;
-      if(i!==index) video.pause();
+      const {card,player}=entry;
+      if(i!==index) player.src = "about:blank";
+      else if(player.src === "about:blank") player.src = entry.item.src;
       card.classList.remove("is-center","is-left","is-right","is-hidden");
       const distance=(i-index+items.length)%items.length;
       card.classList.add(
