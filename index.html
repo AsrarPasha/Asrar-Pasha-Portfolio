@@ -820,6 +820,62 @@ footer{border-top:1px solid #303329}
   }
 }
 </style>
+
+<style id="asrar-carousel-mobile-final-override">
+/* One consistent sizing system for the portfolio carousel */
+.coverflow-card{
+  box-sizing:border-box!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:hidden!important;
+}
+.coverflow-card video{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+}
+.coverflow:not(.is-vertical) .coverflow-card{
+  width:min(44vw,560px)!important;
+  aspect-ratio:16/9!important;
+}
+.coverflow.is-vertical .coverflow-card{
+  width:min(28vw,300px)!important;
+  aspect-ratio:9/16!important;
+}
+@media(max-width:700px){
+  .coverflow{
+    height:500px!important;
+    min-height:500px!important;
+    padding:12px 0!important;
+    overflow:hidden!important;
+  }
+  .coverflow-track{
+    height:100%!important;
+    min-height:0!important;
+  }
+  .coverflow:not(.is-vertical) .coverflow-card{
+    width:min(88vw,560px)!important;
+    aspect-ratio:16/9!important;
+    max-height:none!important;
+  }
+  .coverflow.is-vertical .coverflow-card{
+    width:min(60vw,270px)!important;
+    aspect-ratio:9/16!important;
+    max-height:none!important;
+  }
+  .coverflow-card video{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .coverflow-card{transition:none!important}
+}
+</style>
+
 </head>
 <body>
   <header class="topbar">
