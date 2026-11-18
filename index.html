@@ -820,6 +820,14 @@ footer{border-top:1px solid #303329}
   }
 }
 </style>
+
+<style id="drive-video-poster-overlay">
+.coverflow-card{background:#090909}
+.drive-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#090909;display:block}
+.drive-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:66px;height:66px;border:1px solid rgba(255,220,0,.75);border-radius:50%;background:rgba(8,8,8,.82);color:#ffdc00;font-size:26px;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 28px #0009;backdrop-filter:blur(10px)}
+.drive-play:hover{background:#ffdc00;color:#090909}
+.drive-player{position:absolute;inset:0;width:100%;height:100%;border:0;background:#090909}
+</style>
 </head>
 <body>
   <header class="topbar">
@@ -859,7 +867,7 @@ footer{border-top:1px solid #303329}
 
     <div class="ticker mono"><span>FRAME / FORM / FEEL</span><span>SELECTED WORK — 2026</span><span>HYDERABAD, INDIA ↗</span></div>
 
-    <section class="section" id="work"><div class="section-head"><h2>Selected<br>work<span style="color:var(--yellow)">.</span></h2><span class="mono">01 — PROJECTS</span></div><div class="portfolio-category carousel-category"><div class="category-heading"><h3>Vertical Videos<span>.</span></h3><span class="mono">9:16 / SELECTED WORK</span></div><div class="coverflow" data-items='[{&quot;src&quot;:&quot;https://drive.google.com/file/d/1C2jJ-SA6HpMkjpzxkxBMt_GE4pGoQO-_/preview&quot;,&quot;title&quot;:&quot;Vertical 01&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1gT0lUG95DjpJ2hFsytCYiMb8ZziH9awc/preview&quot;,&quot;title&quot;:&quot;Vertical 02&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1UZTp_Yp069BHked5v_FJKT9hoXet0eJ8/preview&quot;,&quot;title&quot;:&quot;Vertical 03&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/161MNM89PnN3ksJuDEFwXeCdZk6_fSd8-/preview&quot;,&quot;title&quot;:&quot;Vertical 04&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1KEj5hOIxj-HulP-k1MuoESyX1e12qDm0/preview&quot;,&quot;title&quot;:&quot;Vertical 05&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1LTtQNXpXL54_tCXBNvDsyOgiu-SNZIHy/preview&quot;,&quot;title&quot;:&quot;Vertical 06&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1rqUOCV_FCLsT6nJVeSQw0r5nshaNPkjd/preview&quot;,&quot;title&quot;:&quot;Vertical 07&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/10ij36H2jxByrHCGBpfQvWrJQqnWbohJI/preview&quot;,&quot;title&quot;:&quot;Vertical 08&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1Q_HkCv8AKjmZsSaGULjjyUsez2abItSW/preview&quot;,&quot;title&quot;:&quot;Vertical 09&quot;}]'><button class="carousel-arrow prev" aria-label="Previous">←</button><div class="coverflow-track"></div><button class="carousel-arrow next" aria-label="Next">→</button></div><div class="carousel-caption"><div><span class="mono carousel-count">01 / 09</span><h4 class="carousel-title">Vertical 01</h4><p>9:16 · Vertical Video</p></div><div class="carousel-dots"></div></div></div><div class="portfolio-category carousel-category"><div class="category-heading"><h3>Horizontal Videos<span>.</span></h3><span class="mono">16:9 / SELECTED WORK</span></div><div class="coverflow" data-items='[{&quot;src&quot;:&quot;https://drive.google.com/file/d/1iPWOEdgb4qZ4VwO4EAeZOyOhyqVm-mTd/preview&quot;,&quot;title&quot;:&quot;Horizontal 01&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1ZtrxiE7j7-xuupOMZFnE4MJiG9AtCdqJ/preview&quot;,&quot;title&quot;:&quot;Horizontal 02&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/17CA2KL1W34MwFGxvmOl9DvqI_fUxoWl1/preview&quot;,&quot;title&quot;:&quot;Horizontal 03&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1EMd5haf41GbdFKwtfOaoKQdBmafP3tKQ/preview&quot;,&quot;title&quot;:&quot;Horizontal 04&quot;}]'><button class="carousel-arrow prev" aria-label="Previous">←</button><div class="coverflow-track"></div><button class="carousel-arrow next" aria-label="Next">→</button></div><div class="carousel-caption"><div><span class="mono carousel-count">01 / 04</span><h4 class="carousel-title">Horizontal 01</h4><p>16:9 · Horizontal Video</p></div><div class="carousel-dots"></div></div></div></section>
+    <section class="section" id="work"><div class="section-head"><h2>Selected<br>work<span style="color:var(--yellow)">.</span></h2><span class="mono">01 — PROJECTS</span></div><div class="portfolio-category carousel-category"><div class="category-heading"><h3>Vertical Videos<span>.</span></h3><span class="mono">9:16 / SELECTED WORK</span></div><div class="coverflow" data-items='[{&quot;src&quot;:&quot;https://drive.google.com/file/d/1C2jJ-SA6HpMkjpzxkxBMt_GE4pGoQO-_/preview&quot;,&quot;title&quot;:&quot;Vertical 01&quot;,&quot;poster&quot;:&quot;assets/vertical-01-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1gT0lUG95DjpJ2hFsytCYiMb8ZziH9awc/preview&quot;,&quot;title&quot;:&quot;Vertical 02&quot;,&quot;poster&quot;:&quot;assets/vertical-02-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1UZTp_Yp069BHked5v_FJKT9hoXet0eJ8/preview&quot;,&quot;title&quot;:&quot;Vertical 03&quot;,&quot;poster&quot;:&quot;assets/vertical-03-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/161MNM89PnN3ksJuDEFwXeCdZk6_fSd8-/preview&quot;,&quot;title&quot;:&quot;Vertical 04&quot;,&quot;poster&quot;:&quot;assets/vertical-04-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1KEj5hOIxj-HulP-k1MuoESyX1e12qDm0/preview&quot;,&quot;title&quot;:&quot;Vertical 05&quot;,&quot;poster&quot;:&quot;assets/vertical-05-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1LTtQNXpXL54_tCXBNvDsyOgiu-SNZIHy/preview&quot;,&quot;title&quot;:&quot;Vertical 06&quot;,&quot;poster&quot;:&quot;assets/vertical-06-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1rqUOCV_FCLsT6nJVeSQw0r5nshaNPkjd/preview&quot;,&quot;title&quot;:&quot;Vertical 07&quot;,&quot;poster&quot;:&quot;assets/vertical-07-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/10ij36H2jxByrHCGBpfQvWrJQqnWbohJI/preview&quot;,&quot;title&quot;:&quot;Vertical 08&quot;,&quot;poster&quot;:&quot;assets/vertical-08-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1Q_HkCv8AKjmZsSaGULjjyUsez2abItSW/preview&quot;,&quot;title&quot;:&quot;Vertical 09&quot;,&quot;poster&quot;:&quot;assets/vertical-09-thumbnail.jpg&quot;}]'><button class="carousel-arrow prev" aria-label="Previous">←</button><div class="coverflow-track"></div><button class="carousel-arrow next" aria-label="Next">→</button></div><div class="carousel-caption"><div><span class="mono carousel-count">01 / 09</span><h4 class="carousel-title">Vertical 01</h4><p>9:16 · Vertical Video</p></div><div class="carousel-dots"></div></div></div><div class="portfolio-category carousel-category"><div class="category-heading"><h3>Horizontal Videos<span>.</span></h3><span class="mono">16:9 / SELECTED WORK</span></div><div class="coverflow" data-items='[{&quot;src&quot;:&quot;https://drive.google.com/file/d/1iPWOEdgb4qZ4VwO4EAeZOyOhyqVm-mTd/preview&quot;,&quot;title&quot;:&quot;Horizontal 01&quot;,&quot;poster&quot;:&quot;assets/horizontal-01-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1ZtrxiE7j7-xuupOMZFnE4MJiG9AtCdqJ/preview&quot;,&quot;title&quot;:&quot;Horizontal 02&quot;,&quot;poster&quot;:&quot;assets/horizontal-02-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/17CA2KL1W34MwFGxvmOl9DvqI_fUxoWl1/preview&quot;,&quot;title&quot;:&quot;Horizontal 03&quot;,&quot;poster&quot;:&quot;assets/horizontal-03-thumbnail.jpg&quot;},{&quot;src&quot;:&quot;https://drive.google.com/file/d/1EMd5haf41GbdFKwtfOaoKQdBmafP3tKQ/preview&quot;,&quot;title&quot;:&quot;Horizontal 04&quot;,&quot;poster&quot;:&quot;assets/horizontal-04-thumbnail.jpg&quot;}]'><button class="carousel-arrow prev" aria-label="Previous">←</button><div class="coverflow-track"></div><button class="carousel-arrow next" aria-label="Next">→</button></div><div class="carousel-caption"><div><span class="mono carousel-count">01 / 04</span><h4 class="carousel-title">Horizontal 01</h4><p>16:9 · Horizontal Video</p></div><div class="carousel-dots"></div></div></div></section>
 
 <section class="section" id="expertise">
       <div class="section-head"><h2>What I do<span style="color:var(--yellow)">.</span></h2><span class="mono">03 — EXPERTISE</span></div>
@@ -970,17 +978,33 @@ document.querySelectorAll(".coverflow").forEach(root=>{
   const cards = items.map((item,i)=>{
     const card = document.createElement("div");
     card.className = "coverflow-card";
+    const poster = document.createElement("img");
+    poster.className = "drive-poster";
+    poster.src = item.poster || "";
+    poster.alt = (item.title || "Portfolio video") + " thumbnail";
+    poster.loading = i===0 ? "eager" : "lazy";
+    const play = document.createElement("button");
+    play.className = "drive-play";
+    play.type = "button";
+    play.setAttribute("aria-label","Play " + (item.title || "video"));
+    play.textContent = "▶";
     const player = document.createElement("iframe");
-    player.src = item.src;
+    player.className = "drive-player";
     player.title = item.title || "Portfolio video";
     player.setAttribute("allow","autoplay; encrypted-media; picture-in-picture; fullscreen");
     player.setAttribute("allowfullscreen","");
     player.setAttribute("loading",i===0 ? "eager" : "lazy");
     player.setAttribute("referrerpolicy","strict-origin-when-cross-origin");
-    player.style.cssText = "display:block;width:100%;height:100%;border:0;background:#090909";
-    card.appendChild(player);
+    player.style.display = "none";
+    const start = ()=>{
+      if(!card.dataset.loaded){ player.src=item.src; card.dataset.loaded="1"; }
+      poster.style.display="none"; play.style.display="none"; player.style.display="block";
+    };
+    play.addEventListener("click",start);
+    poster.addEventListener("click",start);
+    card.append(poster,play,player);
     track.appendChild(card);
-    return {card,player,item};
+    return {card,player,poster,play,item};
   });
 
   const dotEls = items.map((_,i)=>{
@@ -996,9 +1020,12 @@ document.querySelectorAll(".coverflow").forEach(root=>{
   function show(nextIndex){
     index=(nextIndex+items.length)%items.length;
     cards.forEach((entry,i)=>{
-      const {card,player}=entry;
-      if(i!==index) player.src = "about:blank";
-      else if(player.src === "about:blank") player.src = entry.item.src;
+      const {card,player,poster,play}=entry;
+      if(i!==index && card.dataset.loaded){
+        player.src = "about:blank"; player.style.display="none";
+        poster.style.display="block"; play.style.display="grid";
+        delete card.dataset.loaded;
+      }
       card.classList.remove("is-center","is-left","is-right","is-hidden");
       const distance=(i-index+items.length)%items.length;
       card.classList.add(
