@@ -823,10 +823,17 @@ footer{border-top:1px solid #303329}
 
 <style id="drive-video-poster-overlay">
 .coverflow-card{background:#090909}
-.drive-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#090909;display:block}
+.drive-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#090909;display:block;cursor:pointer}
 .drive-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:66px;height:66px;border:1px solid rgba(255,220,0,.75);border-radius:50%;background:rgba(8,8,8,.82);color:#ffdc00;font-size:26px;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 28px #0009;backdrop-filter:blur(10px)}
 .drive-play:hover{background:#ffdc00;color:#090909}
-.drive-player{position:absolute;inset:0;width:100%;height:100%;border:0;background:#090909}
+/* Open Drive playback in a dedicated responsive viewer, never inside the carousel card. */
+.drive-viewer{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:56px 18px 22px;background:rgba(0,0,0,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.drive-viewer.is-open{display:flex}
+.drive-viewer-frame{position:relative;display:flex;align-items:center;justify-content:center;width:min(94vw,1100px);height:min(82vh,620px);}
+.drive-viewer.is-vertical .drive-viewer-frame{width:min(88vw,430px);height:min(84vh,765px);}
+.drive-viewer iframe{display:block;width:100%;height:100%;border:1px solid rgba(255,220,0,.45);border-radius:14px;background:#050505;box-shadow:0 24px 90px #000b}
+.drive-viewer-close{position:absolute;top:14px;right:16px;width:44px;height:44px;border-radius:50%;border:1px solid #ffffff55;background:#171717;color:#ffdc00;font-size:28px;cursor:pointer;z-index:2}
+@media(max-width:700px){.drive-viewer{padding:58px 10px 16px}.drive-viewer-frame{width:96vw;height:auto;aspect-ratio:16/9}.drive-viewer.is-vertical .drive-viewer-frame{width:min(88vw,390px);height:min(78vh,690px);aspect-ratio:9/16}.drive-viewer iframe{border-radius:10px}.drive-viewer-close{top:10px;right:10px}}
 </style>
 </head>
 <body>
@@ -959,6 +966,21 @@ footer{border-top:1px solid #303329}
   </main>
   <footer class="mono"><span>© 2026 ASRAR PASHA</span><span>BUILT WITH INTENT.</span><a class="backtop" href="#top">BACK TO TOP ↑</a></footer>
 <script>
+// One shared responsive Google Drive viewer keeps carousel cards as clean thumbnail previews.
+const driveViewer=document.createElement('div');
+driveViewer.className='drive-viewer';
+driveViewer.setAttribute('role','dialog');
+driveViewer.setAttribute('aria-modal','true');
+driveViewer.setAttribute('aria-label','Portfolio video player');
+driveViewer.innerHTML='<button class="drive-viewer-close" type="button" aria-label="Close video">×</button><div class="drive-viewer-frame"><iframe title="Portfolio video player" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>';
+document.body.appendChild(driveViewer);
+const driveViewerFrame=driveViewer.querySelector('iframe');
+function closeDriveViewer(){driveViewer.classList.remove('is-open','is-vertical');driveViewerFrame.src='about:blank';document.body.style.overflow='';}
+driveViewer.querySelector('.drive-viewer-close').addEventListener('click',closeDriveViewer);
+driveViewer.addEventListener('click',e=>{if(e.target===driveViewer)closeDriveViewer();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&driveViewer.classList.contains('is-open'))closeDriveViewer();});
+function openDriveViewer(src,isVertical){driveViewer.classList.toggle('is-vertical',!!isVertical);driveViewerFrame.src=src;driveViewer.classList.add('is-open');document.body.style.overflow='hidden';}
+
 document.querySelectorAll(".coverflow").forEach(root=>{
   let items;
   try { items = JSON.parse(root.dataset.items); }
@@ -988,23 +1010,12 @@ document.querySelectorAll(".coverflow").forEach(root=>{
     play.type = "button";
     play.setAttribute("aria-label","Play " + (item.title || "video"));
     play.textContent = "▶";
-    const player = document.createElement("iframe");
-    player.className = "drive-player";
-    player.title = item.title || "Portfolio video";
-    player.setAttribute("allow","autoplay; encrypted-media; picture-in-picture; fullscreen");
-    player.setAttribute("allowfullscreen","");
-    player.setAttribute("loading",i===0 ? "eager" : "lazy");
-    player.setAttribute("referrerpolicy","strict-origin-when-cross-origin");
-    player.style.display = "none";
-    const start = ()=>{
-      if(!card.dataset.loaded){ player.src=item.src; card.dataset.loaded="1"; }
-      poster.style.display="none"; play.style.display="none"; player.style.display="block";
-    };
+    const start = ()=>openDriveViewer(item.src,isVertical);
     play.addEventListener("click",start);
     poster.addEventListener("click",start);
-    card.append(poster,play,player);
+    card.append(poster,play);
     track.appendChild(card);
-    return {card,player,poster,play,item};
+    return {card,poster,play,item};
   });
 
   const dotEls = items.map((_,i)=>{
@@ -1020,12 +1031,7 @@ document.querySelectorAll(".coverflow").forEach(root=>{
   function show(nextIndex){
     index=(nextIndex+items.length)%items.length;
     cards.forEach((entry,i)=>{
-      const {card,player,poster,play}=entry;
-      if(i!==index && card.dataset.loaded){
-        player.src = "about:blank"; player.style.display="none";
-        poster.style.display="block"; play.style.display="grid";
-        delete card.dataset.loaded;
-      }
+      const {card}=entry;
       card.classList.remove("is-center","is-left","is-right","is-hidden");
       const distance=(i-index+items.length)%items.length;
       card.classList.add(
