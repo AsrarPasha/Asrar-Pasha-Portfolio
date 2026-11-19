@@ -821,16 +821,35 @@ footer{border-top:1px solid #303329}
 }
 </style>
 
-<style id="square-corners-sitewide">
-/* Remove rounded corners across the site. Keep all video presentation unchanged. */
-*:not(.video-frame):not(.coverflow-card):not(.carousel-dot):not(.carousel-arrow) {
+<style id="video-only-square-corners-and-carousel-redesign">
+/* Only video frames: square corners. All site buttons and other UI retain their original styling. */
+.video-frame,
+.coverflow-card {
   border-radius: 0 !important;
 }
-*:not(.video-frame):not(.coverflow-card):not(.carousel-dot):not(.carousel-arrow)::before,
-*:not(.video-frame):not(.coverflow-card):not(.carousel-dot):not(.carousel-arrow)::after {
-  border-radius: 0 !important;
+/* Refined rectangular video carousel; existing arrow buttons, dots, captions and video elements are untouched. */
+.coverflow {
+  perspective: 1600px;
+}
+.coverflow-card {
+  border: 1px solid rgba(255,220,0,.48);
+  box-shadow: 0 22px 65px rgba(0,0,0,.58);
+  background: #080807;
+  transition: transform .65s cubic-bezier(.2,.75,.2,1), opacity .65s, filter .65s, border-color .3s;
+}
+.coverflow-card.is-center {
+  border-color: rgba(255,220,0,.82);
+  box-shadow: 0 26px 75px rgba(0,0,0,.68), 0 0 0 1px rgba(255,220,0,.10);
+}
+.coverflow-card.is-left,
+.coverflow-card.is-right {
+  border-color: rgba(255,220,0,.24);
+}
+.video-frame {
+  border: 1px solid rgba(255,220,0,.55);
 }
 </style>
+
 </head>
 <body>
   <header class="topbar">
