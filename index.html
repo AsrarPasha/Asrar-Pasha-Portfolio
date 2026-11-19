@@ -821,30 +821,33 @@ footer{border-top:1px solid #303329}
 }
 </style>
 
-<style id="mobile-video-rounded-corners-fix">
-/* iPhone/Safari: clip the video layer to the same rounded frame as its card. */
+<style id="mobile-carousel-rounded-corners-fix">
+/* Match the desktop carousel card's rounded corners on mobile Safari/iOS. */
+.coverflow-card,
+.coverflow.is-vertical .coverflow-card {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  clip-path: inset(0 round 18px);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+.coverflow-card video,
+.coverflow.is-vertical .coverflow-card video {
+  border-radius: inherit !important;
+}
 @media (max-width: 700px) {
   .coverflow-card,
-  .coverflow-card.is-center,
-  .coverflow-card.is-left,
-  .coverflow-card.is-right {
-    border-radius: 22px !important;
+  .coverflow.is-vertical .coverflow-card {
+    border-radius: 18px !important;
     overflow: hidden !important;
-    -webkit-clip-path: inset(0 round 22px);
-    clip-path: inset(0 round 22px);
-    isolation: isolate;
+    clip-path: inset(0 round 18px);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
-  .coverflow-card video {
-    border-radius: 20px !important;
-    overflow: hidden !important;
-    -webkit-clip-path: inset(0 round 20px);
-    clip-path: inset(0 round 20px);
-    display: block !important;
-    object-fit: contain !important;
+  .coverflow-card video,
+  .coverflow.is-vertical .coverflow-card video {
+    border-radius: inherit !important;
   }
 }
 </style>
-
 </head>
 <body>
   <header class="topbar">
